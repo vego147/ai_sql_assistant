@@ -1,66 +1,59 @@
-AI-Powered SQL Assistant
-This project demonstrates the use of an AI-powered assistant that generates SQL queries based on user input. The system allows users to interact with a PostgreSQL database via a command-line interface, where the assistant generates raw SQL queries using an AI model (Gemini API) to execute on the database.
+# AI-Powered SQL Assistant
 
-Features
-AI-Powered SQL Generation: Uses the Gemini API to dynamically generate SQL queries based on user input.
+This project demonstrates the use of an AI-powered assistant that generates SQL queries based on user input. The system allows users to interact with a PostgreSQL database via a command-line interface, where the assistant generates raw SQL queries using the Gemini API to execute on the database.
 
-PostgreSQL Integration: Connects to a PostgreSQL database to execute generated SQL queries.
+## Features
 
-Interactive Command Line: Users can interact with the system to request data or perform actions on the database tables.
+- **AI-Powered SQL Generation**: Uses the Gemini API to dynamically generate SQL queries based on user input.
+- **PostgreSQL Integration**: Connects to a PostgreSQL database to execute generated SQL queries.
+- **Interactive Command Line**: Users can interact with the system to request data or perform actions on the database tables.
+- **Database Table Check**: Ensures the requested tables exist in the database before execution.
+- **Dynamic SQL Execution**: Executes the generated SQL queries and returns the results to the user.
 
-Database Table Check: Ensures the requested tables exist in the database before execution.
+## Project Structure
 
-Dynamic SQL Execution: Executes the generated SQL queries and returns the results to the user.
+├── agent.py # Contains the logic for generating SQL queries via Gemini API
+├── ai_sql_assistant.py # Main application file to interact with the database
+├── database.py # Contains database connection logic and helper functions
+├── .env # Environment variables (for API keys and database credentials)
+├── README.md # Project documentation (this file)
+├── requirements.txt # List of project dependencies
+└── .gitignore # Git ignore file
 
-Project Structure
-bash
+markdown
 Copy
 Edit
-├── agent.py              # Contains the logic for generating SQL queries via Gemini API
-├── ai_sql_assistant.py    # Main application file to interact with the database
-├── database.py           # Contains database connection logic and helper functions
-├── .env                  # Environment variables (for API keys and database credentials)
-├── README.md             # Project documentation (this file)
-├── requirements.txt      # List of project dependencies
-└── .gitignore            # Git ignore file
-Requirements
+
+## Requirements
+
 Before running the project, make sure you have the following installed:
 
-Python 3.x
+- Python 3.x
+- PostgreSQL database
+- Gemini API key (from Google Cloud)
+- psycopg2 (PostgreSQL client for Python)
+- requests (for API calls)
+- python-dotenv (for loading environment variables)
 
-PostgreSQL database
+## Installation
 
-Gemini API key (from Google Cloud)
+### 1. Clone the repository:
 
-psycopg2 (PostgreSQL client for Python)
-
-requests (for API calls)
-
-python-dotenv (for loading environment variables)
-
-Installation
-Clone the repository:
-
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/your-username/ai-sql-assistant.git
 cd ai-sql-assistant
-Create a virtual environment:
-
+2. Create a virtual environment:
 bash
 Copy
 Edit
 python -m venv myenv
-source myenv/bin/activate  # On Windows, use `myenv\Scripts\activate`
-Install dependencies:
-
+source myenv/bin/activate  # On Windows, use myenv\Scripts\activate
+3. Install dependencies:
 bash
 Copy
 Edit
 pip install -r requirements.txt
-Set up the environment variables:
-
+4. Set up the environment variables:
 Create a .env file in the root directory of the project and add your database credentials and Gemini API key:
 
 bash
@@ -72,8 +65,7 @@ DB_NAME=your-db-name
 DB_USER=your-db-username
 DB_PASSWORD=your-db-password
 GEMINI_API=your-gemini-api-key
-Run the application:
-
+5. Run the application:
 After setting up the environment, run the ai_sql_assistant.py file:
 
 bash
@@ -86,6 +78,7 @@ Usage
 Once the program is running, the system will ask for the table name you want to access and interact with. You can enter SQL-related queries, and the system will generate and execute the corresponding SQL for you.
 
 Example:
+
 bash
 Copy
 Edit
