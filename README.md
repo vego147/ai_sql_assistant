@@ -1,105 +1,109 @@
-AI SQL Assistant
-The AI SQL Assistant project is designed to simplify database interaction through natural language queries. It leverages AI (specifically Google's Gemini API) to generate SQL queries based on user input and the structure of the database. This allows users to interact with their PostgreSQL database in an intuitive way.
+# AI SQL Assistant
 
-Features
-Database Connection: Connects to a PostgreSQL database using environment variables for credentials.
+This project provides an AI-powered SQL assistant that allows users to interact with their PostgreSQL database using natural language. The assistant leverages the Gemini API to convert user prompts into executable SQL queries.
 
-Dynamic SQL Generation: Uses Gemini API to generate raw SQL queries based on user input.
+---
 
-Conversation History: Keeps track of the conversation history to generate context-aware SQL queries.
+## Features
 
-Table & Column Checking: Ensures the specified table exists in the database and fetches column names.
+* **Natural Language to SQL:** Translate everyday language into PostgreSQL queries.
+* **Conversation History:** The AI considers previous interactions to generate more accurate and contextually relevant SQL.
+* **Table and Column Awareness:** The assistant understands the structure of your selected table, including its columns, to generate precise queries.
+* **Basic Database Operations:** Supports `SELECT`, `INSERT`, `UPDATE`, and `DELETE` operations based on user input.
+* **Database Commit:** Allows users to commit changes made to the database.
 
-Commit Changes: Supports committing database changes to the server.
+---
 
-Prerequisites
-Python 3.8+
+## Setup
 
-PostgreSQL (Make sure the database is set up and accessible)
+### Prerequisites
 
-Gemini API Key: Required to interact with the Google Gemini API for SQL generation.
+* Python 3.7+
+* PostgreSQL database
+* A Gemini API Key
 
-Installation
-Step 1: Clone the Repository
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/ai_sql_assistant.git
-cd ai_sql_assistant
-Step 2: Install Dependencies
-Install the required Python libraries using pip:
+### Installation
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Step 3: Set Up Environment Variables
-Create a .env file in the root directory of the project and add the following environment variables:
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/ai-sql-assistant.git](https://github.com/your-username/ai-sql-assistant.git)
+    cd ai-sql-assistant
+    ```
 
-dotenv
-Copy
-Edit
-DB_HOST=<your_database_host>
-DB_PORT=<your_database_port>
-DB_USER=<your_database_user>
-DB_NAME=<your_database_name>
-DB_PASSWORD=<your_database_password>
-GEMINI_API=<your_gemini_api_key>
-Replace <your_database_* values with your actual PostgreSQL database credentials.
+2.  **Create a virtual environment (recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
 
-Replace <your_gemini_api_key> with your Gemini API key.
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *(Note: You'll need to create a `requirements.txt` file containing `psycopg2-binary`, `python-dotenv`, and `requests`.)*
 
-Step 4: Run the Program
-To start the AI SQL Assistant, run the following command:
+4.  **Create a `.env` file:**
+    Create a file named `.env` in the root directory of the project and add your database credentials and Gemini API key:
 
-bash
-Copy
-Edit
-python ai_sql_assistant.py
-Step 5: Interact with the Assistant
-Accessing a table: Enter the name of the table you want to interact with.
+    ```
+    DB_HOST=your_db_host
+    DB_PORT=your_db_port
+    DB_USER=your_db_user
+    DB_NAME=your_db_name
+    DB_PASSWORD=your_db_password
+    GEMINI_API=your_gemini_api_key
+    ```
+    Replace the placeholder values with your actual database and Gemini API credentials.
 
-SQL operations: You can input various natural language SQL queries like:
+---
 
-"Show me all rows"
+## Usage
 
-"What is the average salary in the employees table?"
+1.  **Run the main application:**
+    ```bash
+    python ai_sql_assistant.py
+    ```
 
-Commit changes: Type commit to save any changes to the database.
+2.  **Enter Table Name:**
+    The assistant will first prompt you to enter the name of the table you want to access.
+    ```
+    Please Enter name You want to access: users
+    ```
+    If the table doesn't exist, you'll be prompted again.
 
-Exit: Type quit to exit the application.
+3.  **Interact with the AI:**
+    Once a valid table is selected, you can start interacting with the AI by typing your requests in natural language.
 
-Example Usage
-bash
-Copy
-Edit
-Please Enter name You want to access: employees
-Please Enter What you want to do with employees: Show me all rows
-(1, 'John', 25, 'Software Engineer', 55000)
-(2, 'Jane', 30, 'Data Scientist', 60000)
+    ```
+    Please Enter What you want to do with users: show me all users
+    (1, 'Alice', 'alice@example.com')
+    (2, 'Bob', 'bob@example.com')
 
-Please Enter What you want to do with employees: commit
-Database Updated
+    Please Enter What you want to do with users: add a new user named 'Charlie' with email 'charlie@example.com'
+    Success
 
-Please Enter name You want to access: quit
-Project Structure
-ai_sql_assistant.py: Main script that interacts with the user and processes input to generate SQL queries.
+    Please Enter What you want to do with users: commit
+    Database Updated
 
-database.py: Contains functions for connecting to the PostgreSQL database and interacting with it.
+    Please Enter What you want to do with users: quit
+    ```
 
-agent.py: Manages communication with the Gemini API to generate SQL queries based on user input.
+### Commands
 
-.env: Stores environment variables for database credentials and API keys.
+* `quit` or `q`: Exits the current table interaction or the application entirely.
+* `commit`: Saves any changes made to the database.
 
-requirements.txt: Lists the dependencies for the project.
+---
 
-Dependencies
-requests: Used to interact with the Gemini API.
+## Project Structure
 
-psycopg2: PostgreSQL adapter for Python.
+* **`ai_sql_assistant.py`**: The main application file that handles user input, connects to the database, and interacts with the AI agent.
+* **`database.py`**: Contains functions for connecting to the PostgreSQL database, checking table existence, and retrieving column names.
+* **`agent.py`**: Contains the `sql_agent` function responsible for making API calls to the Gemini model to convert natural language into SQL queries.
+* **`.env`**: Stores environment variables for database credentials and API keys (not included in the repository for security reasons).
 
-python-dotenv: Loads environment variables from the .env file.
+---
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Contributing
 
+Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
