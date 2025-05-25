@@ -1,0 +1,17 @@
+
+*.pyc
+__pycache__/
+myenv/
+.env
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+.coverage
+*.coveragerc
+*.sqlite3
+*.db
+build/
+dist/
+*.egg-info/
