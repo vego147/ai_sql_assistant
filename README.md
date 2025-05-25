@@ -9,7 +9,7 @@ This project provides an AI-powered SQL assistant that allows users to interact 
 * **Natural Language to SQL:** Translate everyday language into PostgreSQL queries.
 * **Conversation History:** The AI considers previous interactions to generate more accurate and contextually relevant SQL.
 * **Table and Column Awareness:** The assistant understands the structure of your selected table, including its columns, to generate precise queries.
-* **Basic Database Operations:** Supports `SELECT`, `INSERT`, `UPDATE`, and `DELETE` operations based on user input.
+* **Database Operations:** Handles both basic data manipulation and advanced queries through natural language input..
 * **Database Commit:** Allows users to commit changes made to the database.
 
 ---
